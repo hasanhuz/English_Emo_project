@@ -10,10 +10,11 @@ from data_vectorizers import count_vectorize, tfidf_vectorize, vectorize_data
 from sklearn.linear_model import SGDClassifier
 from sklearn.linear_model import PassiveAggressiveClassifier
 from sklearn.linear_model import Perceptron
+from sys import argv
 
 #loading data
-X_train, y_train = loadingData('train_ref.csv')
-X_test, y_test = loadingData('real_val_set.csv')
+X_train, y_train = loadingData(argv[1])
+X_test, y_test = loadingData(argv[2])
 print('Done loading data...')
 
 #vectorizing data
