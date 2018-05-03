@@ -8,14 +8,15 @@ from loading_data import loadingData
 from bow_means import MeanEmbeddingVectorizer, loadW2V
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import confusion_matrix, classification_report
+from sys import argv
 
 #loading data
-X_train, y_train = loadingData('train_ref.csv')
-X_test, y_test = loadingData('real_val_set.csv')
+X_train, y_train = loadingData(argv[1])
+X_test, y_test = loadingData(argv[2])
 print('Done loading data...')
 
 #loading w2v model
-w2v_model= loadW2V('w2v_emedding.csv', X_train)
+w2v_model= loadW2V(argv[3], X_train)
 
 print(len(w2v_model))
 svm_w2v = Pipeline([("w2v_vectorizer", MeanEmbeddingVectorizer(w2v_model)),
